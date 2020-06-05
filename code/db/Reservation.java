@@ -24,10 +24,10 @@ public class Reservation {
 		
 	}
 	
-	public String showReservationDate() {
-		String date="予約番号:"+this.reservNumber+"="+"会員名:"+this.name+"="+"チケット名:"+this.ticketName+"="+"予約日:"+this.ticketDate+"="+"予約枚数:"+this.reservMaisu;
+	public String showReservationData() {
+		String data="予約番号:"+this.reservNumber+"="+"会員名:"+this.name+"="+"チケット名:"+this.ticketName+"="+"予約日:"+this.ticketDate+"="+"予約枚数:"+this.reservMaisu;
 		
-		return date;
+		return data;
 	}
 	
 	

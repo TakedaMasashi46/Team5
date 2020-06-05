@@ -12,16 +12,16 @@ public class TicketList {
 	//	ticketList.add();
 	}
 	
-	public String showTicketList() {
-		String date = null;
+	public String showTicketNumberName() {
+		String data = null;
 		
 		for(Ticket t:ticketList) {
-			date+=t.getTicketName();
-			date+=t.getTicketNumber();
-			date+="=";
+			data+=t.getTicketName();
+			data+=t.getTicketNumber();
+			data+="=";
 		}
 		
-		return date;
+		return data;
 	}
 	public Ticket getTicket(int num) {
 		
@@ -33,5 +33,13 @@ public class TicketList {
 		return null;
 	}
 	
+	public String showAllTicketDate() {
+		String data=null;
+		for(Ticket t:ticketList) {
+			data+=t.showTicketDate();
+			data+="=";
+		}
+		return data;
+	}
 	
 }

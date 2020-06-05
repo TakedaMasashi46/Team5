@@ -19,7 +19,8 @@ public class Control {
 	
 	public static void main(String[] args) {
 	
-		while(true) start();
+		//コントロールのインスタンス
+		start();
 	
 	}
 	
@@ -57,7 +58,10 @@ public class Control {
 					break;
 				
 				case 2:																//チケット情報表示
-					//showReservationDate
+					String[] allList_ticketDate = (tl.showAllTicketDate()).split("=");				//格納されてるチケット情報表示
+					for(String line:allList_ticketDate) {
+						uiinterface.output(line);
+					}
 					break;
 				case 3:																//予約情報表示
 					showReservedTicket(member);//ユーザーIDから予約一覧で検索かけてID該当する予約を一括表示
@@ -125,11 +129,12 @@ public class Control {
 		int approval=2;
 		int selectNumOfTicket=0;
 		int countOfReservation=1;
-		
-		String[] date_ticketList=(tl.showTicketList()).split("=");				//チケット名と番号のみ表示
+		//要検討
+		String[] date_ticketList=(tl.showTicketNumberName()).split("=");				//チケット名と番号のみ表示
 		for(String line:date_ticketList) {
 			uiinterface.output(line);
 		}
+		//↑要検討
 		do {
 			while(ticket == null) {
 				uiinterface.output("予約したいチケット番号を入力してください");
@@ -167,11 +172,16 @@ public class Control {
 			approval=uiinterface.inputInt();
 			
 		}while(approval == 2);
+		//approval初期化
+		//日にちの取得
+		//
 		//予約番号、会員名、チケット名、予約日、予約枚数    予約しました
-		Reservation re=rl.createReservation(countOfReservation,member.getMemberID(),ticket,"予約日",selectNumOfTicket);
+		//Listで持ってこないと全部表示できない
+		//クラスフィールドとして予約番号書き換え
+		Reservation re = rl.createReservation(countOfReservation,member.getMemberID(),ticket,"予約日",selectNumOfTicket);
 		
 		
-		String[] date_showReserv=(re.showReservationDate()).split("=");
+		String[] date_showReserv = (re.showReservationData()).split("=");
 		
 		for(String line:date_showReserv) {											//予約情報表示
 			uiinterface.output(line);
