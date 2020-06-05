@@ -18,6 +18,10 @@ public class ReservationList {
 		return re;
 	}
 	
+	public Reservation get(int num) {
+		return reservationList.get(num);
+	}
+	
 
 	
 }
