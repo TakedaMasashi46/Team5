@@ -1,4 +1,4 @@
-package db;
+package database;
 
 import java.util.ArrayList;
 
@@ -14,10 +14,11 @@ public class TicketList {
 	}
 	
 	public String showTicketNumberName() {
-		String data = null;
+		String data = "チケット名:チケット番号=";
 		
 		for(Ticket t:ticketList) {
 			data+=t.getTicketName();
+			data+=":";
 			data+=t.getTicketNumber();
 			data+="=";
 		}
@@ -30,7 +31,7 @@ public class TicketList {
 			if(num == t.getTicketNumber()) {
 				return t;								//メンバーオブジェクト返す
 			}
-		}		
+		}
 		return null;
 	}
 	
