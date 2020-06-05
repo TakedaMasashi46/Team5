@@ -138,6 +138,7 @@ public class Control {
 			
 			//チケット情報表示してる↓													//項目のチケット情報表示を使うかどうか
 			String [] date_ticket =(ticket.showTicketDate()).split("=");
+			uiinterface.output("・チケット情報");
 			for(String line:date_ticket) {
 				uiinterface.output(line);
 			}
@@ -176,6 +177,7 @@ public class Control {
 		
 		String[] date_showReserv = (re.showReservationData()).split("=");
 		
+		uiinterface.output("・予約情報");
 		for(String line:date_showReserv) {											//予約情報表示
 			uiinterface.output(line);
 		}
