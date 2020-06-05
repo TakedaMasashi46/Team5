@@ -9,6 +9,13 @@ public class Ticket {
 	private int stock;					//在庫
 	
 	
+	public Ticket(int tNum,String tName,int price,String date,int stock) {
+		this.ticketNumber=tNum;
+		this.ticketName=tName;
+		this.price=price;
+		this.date=date;
+		this.stock=stock;
+	}
 	
 	public int getTicketNumber() {
 		return this.ticketNumber;
