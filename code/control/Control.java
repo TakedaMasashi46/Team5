@@ -172,7 +172,7 @@ public class Control {
 		//予約番号、会員名、チケット名、予約日、予約枚数    予約しました
 		//Listで持ってこないと全部表示できない
 		//クラスフィールドとして予約番号書き換え
-		Reservation re = rl.createReservation(countOfReservation,member.getMemberID(),ticket,"予約日",selectNumOfTicket);
+		Reservation re = rl.createReservation(member.getMemberID(),ticket,"予約日",selectNumOfTicket);
 		
 		
 		String[] date_showReserv = (re.showReservationData()).split("=");
