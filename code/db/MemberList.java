@@ -16,11 +16,17 @@ public class MemberList {
 	public Member checkID(String ID) {
 		
 		for(Member m:memberList ) {			
-			if(ID==m.getMemberID()) {
+			if(ID.equals(m.getMemberID())) {
 				return m;								//メンバーオブジェクト返す
 			}
 		}		
 		return null;		
+	}
+	
+	
+	//金子テスト用追加 リスト内要素リターン
+	public Member getMember(int idx) {
+		return memberList.get(idx);
 	}
 	
 }

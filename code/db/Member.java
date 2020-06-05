@@ -16,7 +16,7 @@ public class Member {
 	}
 	
 	public boolean getMmberPass(String pass) {
-		if(this.password==pass) {
+		if(this.password.equals(pass)) {
 			return true;
 		}
 		else return false;
