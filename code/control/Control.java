@@ -14,20 +14,14 @@ public class Control {
 	
 //	private static String pass;
 //	private static String userName;
-	private static int val_menu;
-	private static int val_koumoku;
+	private int val_menu;
+	private int val_koumoku;
 	
-	public static void main(String[] args) {
-	
-		while(true) start();
-	
-	}
-	
-	public static void start() {
+	public void start() {
 		Interface uiinterface=new Interface();
-		MemberList ml=new MemberList();
+		MemberList ml=new MemberList("ID","pass");
 		ReservationList rl=new ReservationList();
-		TicketList tl=new TicketList();
+		TicketList tl=new TicketList();											//チケットオブジェクトも生成
 		
 		Member member=null;														//メンバーオブジェクトは属性で持っていないと予約できない
 		Reservation reservation=null;
@@ -57,7 +51,10 @@ public class Control {
 					break;
 				
 				case 2:																//チケット情報表示
-					//showReservationDate
+					String[] allList_ticketDate = (tl.showAllTicketDate()).split("=");				//格納されてるチケット情報表示
+					for(String line:allList_ticketDate) {
+						uiinterface.output(line);
+					}
 					break;
 				case 3:																//予約情報表示
 					showReservedTicket(member);//ユーザーIDから予約一覧で検索かけてID該当する予約を一括表示
@@ -71,7 +68,7 @@ public class Control {
 		}//return;ここいる？
 	}
 	//メニュー選択
-	public static int menu(Interface uiinterface) {					//ログインするか新規作成するか
+	public int menu(Interface uiinterface) {					//ログインするか新規作成するか
 		uiinterface.output("項目に該当する数値を入力してください");
 		uiinterface.output("1.ログイン");
 		//uiinterface.output("2,新規作成");
@@ -86,7 +83,7 @@ public class Control {
 	
 	
 	//ログイン
-	public static Member login(Interface uiinterface,MemberList ml) {
+	public Member login(Interface uiinterface,MemberList ml) {
 		Member mm = null;
 		while(mm==null) {											//ユーザーID     nullなら入力し直し
 			uiinterface.output("ユーザーIDを入力してください");
@@ -101,7 +98,7 @@ public class Control {
 		return mm;													//pass変更するならここでオブジェクトを返すがよい？
 	}
 	//モード選択
-	public static int selectMode(Interface uiinterface) {
+	public int selectMode(Interface uiinterface) {
 		
 		int date=0;
 		uiinterface.output("項目の選択 以下数字を入力してください");
@@ -119,17 +116,18 @@ public class Control {
 	}
 	
 	//予約
-	public static Reservation reserve(Interface uiinterface, TicketList tl, ReservationList rl,Member member) {
+	public Reservation reserve(Interface uiinterface, TicketList tl, ReservationList rl,Member member) {
 		
 		Ticket ticket=null;
 		int approval=2;
 		int selectNumOfTicket=0;
 		int countOfReservation=1;
-		
-		String[] date_ticketList=(tl.showTicketList()).split("=");				//チケット名と番号のみ表示
+		//要検討
+		String[] date_ticketList=(tl.showTicketNumberName()).split("=");				//チケット名と番号のみ表示
 		for(String line:date_ticketList) {
 			uiinterface.output(line);
 		}
+		//↑要検討
 		do {
 			while(ticket == null) {
 				uiinterface.output("予約したいチケット番号を入力してください");
@@ -140,6 +138,7 @@ public class Control {
 			
 			//チケット情報表示してる↓													//項目のチケット情報表示を使うかどうか
 			String [] date_ticket =(ticket.showTicketDate()).split("=");
+			uiinterface.output("・チケット情報");
 			for(String line:date_ticket) {
 				uiinterface.output(line);
 			}
@@ -167,23 +166,26 @@ public class Control {
 			approval=uiinterface.inputInt();
 			
 		}while(approval == 2);
+		//approval初期化
+		//日にちの取得
+		//
 		//予約番号、会員名、チケット名、予約日、予約枚数    予約しました
-		Reservation re=rl.createReservation(countOfReservation,member.getMemberID(),ticket,"予約日",selectNumOfTicket);
+		//Listで持ってこないと全部表示できない
+		//クラスフィールドとして予約番号書き換え
+		Reservation re = rl.createReservation(countOfReservation,member.getMemberID(),ticket,"予約日",selectNumOfTicket);
 		
 		
-		String[] date_showReserv=(re.showReservationDate()).split("=");
+		String[] date_showReserv = (re.showReservationData()).split("=");
 		
+		uiinterface.output("・予約情報");
 		for(String line:date_showReserv) {											//予約情報表示
 			uiinterface.output(line);
 		}
 		return re;																	//予約オブジェクト
 	}
 	
+	//予約情報表示メソッド
 	public static void showReservedTicket(Member member) {
-		
-		
-		
-		
 	}
 	
 }

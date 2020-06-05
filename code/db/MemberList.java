@@ -8,8 +8,8 @@ public class MemberList {
 	//ユーザー情報をクラス型で　持っておく　リストとか
 	ArrayList<Member> memberList =new ArrayList<Member>();
 
-	public MemberList() {
-		memberList.add(new Member());
+	public MemberList(String ID,String pass) {
+		memberList.add(new Member(ID,pass));
 	}
 	
 	
@@ -22,8 +22,5 @@ public class MemberList {
 		}		
 		return null;		
 	}
-	
-	
-	
 	
 }

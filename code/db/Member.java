@@ -5,12 +5,11 @@ public class Member {
 	private String userID;
 	private String password;
 	
-	public void Member(String ID,String pass) {
+	public Member(String ID,String pass) {
 		
 		this.userID=ID;
 		this.password=pass;
 	}
-	
 	
 	public String getMemberID() {
 		return this.userID;
