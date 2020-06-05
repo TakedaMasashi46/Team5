@@ -2,6 +2,7 @@ package db;
 
 public class Reservation {
 	
+	private static int counter = 1;
 	
 	private int reservNumber;//予約番号
 	private String name;//会員名
@@ -10,11 +11,12 @@ public class Reservation {
 	private int  reservMaisu;//予約枚数
 	
 	//予約番号、会員名、チケット名、予約日、予約枚数
-	public Reservation(int reservNumber,String userName,Ticket ticket,String date,int selectNumOfTicket) {
+	public Reservation(String userName,Ticket ticket,String date,int selectNumOfTicket) {
 		
 		String ticketName=ticket.getTicketName();									//予約情報とチケット間で依存関係あり
 		
-		this.reservNumber=reservNumber;
+		this.reservNumber=counter;
+		counter++;
 		this.name=userName;
 		this.ticketName=ticketName;
 		this.ticketDate=date;
