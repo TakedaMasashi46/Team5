@@ -1,17 +1,16 @@
 package ui;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Interface {
 
 	//使用者からの入力を受け付ける
 	
 	//ユーザー名,pass
-	//controlに投げてDB判定してもらってよければ次へ
-	//入力のみ？判定はcontrol?
-	//ならここでは入力されたものすべて返す
+	//ここでは入力されたものすべて返す
 	public String inputStr() {
-		 Scanner scan = new Scanner(System.in);
-		 String in=scan.nextLine();
+		Scanner scan = new Scanner(System.in);
+		String in=scan.nextLine();
 		return in;
 	}
 	public int inputInt() {
@@ -22,7 +21,7 @@ public class Interface {
 				Scanner scan = new Scanner(System.in);
 				in=scan.nextInt();
 				count=1;
-			}catch(NumberFormatException e) {
+			}catch(InputMismatchException e) {
 				System.out.println("数値入力してください");
 			}
 		}
