@@ -1,12 +1,15 @@
-package control;
+package center;
 
-import ui.Interface;
-import db.Member;
-import db.MemberList;
-import db.Reservation;
-import db.ReservationList;
-import db.Ticket;
-import db.TicketList;
+import userInterface.Interface;
+
+import java.util.Objects;
+
+import database.Member;
+import database.MemberList;
+import database.Reservation;
+import database.ReservationList;
+import database.Ticket;
+import database.TicketList;
 
 
 //エラー処理を行うクラスあってもいい　メソッドごとに判定の種類分けられる
@@ -125,7 +128,10 @@ public class Control {
 		//要検討
 		String[] date_ticketList=(tl.showTicketNumberName()).split("=");				//チケット名と番号のみ表示
 		for(String line:date_ticketList) {
-			uiinterface.output(line);
+			
+				uiinterface.output(line);
+			
+			
 		}
 		//↑要検討
 		do {
@@ -133,7 +139,10 @@ public class Control {
 				uiinterface.output("予約したいチケット番号を入力してください");
 				int num = uiinterface.inputInt();
 				
-				ticket = tl.getTicket(num);										//選択したチケットオブジェクト
+				ticket = tl.getTicket(num);	//選択したチケットオブジェクト
+				if(Objects.isNull(ticket)) {
+					uiinterface.output("※存在するチケット番号を入力してください");
+				}
 			}
 			
 			//チケット情報表示してる↓													//項目のチケット情報表示を使うかどうか
@@ -146,6 +155,7 @@ public class Control {
 			uiinterface.output("このチケットを予約しますか？");
 			uiinterface.output("承認なら「1」,承認しないなら「2」を入力してください");
 			approval=uiinterface.inputInt();
+			if(approval==2)ticket = null;
 		}while(approval ==2);													//非承認なら繰り返し
 		approval=2;//trueなら１falseなら２とかでも書き換えできる
 		
