@@ -19,7 +19,7 @@ public class Control {
 	
 	public void start() {
 		Interface uiinterface=new Interface();
-		MemberList ml=new MemberList();
+		MemberList ml=new MemberList("ID","pass");
 		ReservationList rl=new ReservationList();
 		TicketList tl=new TicketList();											//チケットオブジェクトも生成
 		
