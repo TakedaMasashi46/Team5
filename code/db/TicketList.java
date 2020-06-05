@@ -9,7 +9,8 @@ public class TicketList {
 	ArrayList<Ticket> ticketList =new ArrayList<Ticket>();
 	
 	public TicketList() {
-	//	ticketList.add();
+		ticketList.add(new Ticket(1, "水族館", 1000, "2020-6-6", 20));
+
 	}
 	
 	public String showTicketNumberName() {

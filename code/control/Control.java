@@ -14,21 +14,14 @@ public class Control {
 	
 //	private static String pass;
 //	private static String userName;
-	private static int val_menu;
-	private static int val_koumoku;
+	private int val_menu;
+	private int val_koumoku;
 	
-	public static void main(String[] args) {
-	
-		//コントロールのインスタンス
-		start();
-	
-	}
-	
-	public static void start() {
+	public void start() {
 		Interface uiinterface=new Interface();
 		MemberList ml=new MemberList();
 		ReservationList rl=new ReservationList();
-		TicketList tl=new TicketList();
+		TicketList tl=new TicketList();											//チケットオブジェクトも生成
 		
 		Member member=null;														//メンバーオブジェクトは属性で持っていないと予約できない
 		Reservation reservation=null;
@@ -75,7 +68,7 @@ public class Control {
 		}//return;ここいる？
 	}
 	//メニュー選択
-	public static int menu(Interface uiinterface) {					//ログインするか新規作成するか
+	public int menu(Interface uiinterface) {					//ログインするか新規作成するか
 		uiinterface.output("項目に該当する数値を入力してください");
 		uiinterface.output("1.ログイン");
 		//uiinterface.output("2,新規作成");
@@ -90,7 +83,7 @@ public class Control {
 	
 	
 	//ログイン
-	public static Member login(Interface uiinterface,MemberList ml) {
+	public Member login(Interface uiinterface,MemberList ml) {
 		Member mm = null;
 		while(mm==null) {											//ユーザーID     nullなら入力し直し
 			uiinterface.output("ユーザーIDを入力してください");
@@ -105,7 +98,7 @@ public class Control {
 		return mm;													//pass変更するならここでオブジェクトを返すがよい？
 	}
 	//モード選択
-	public static int selectMode(Interface uiinterface) {
+	public int selectMode(Interface uiinterface) {
 		
 		int date=0;
 		uiinterface.output("項目の選択 以下数字を入力してください");
@@ -123,7 +116,7 @@ public class Control {
 	}
 	
 	//予約
-	public static Reservation reserve(Interface uiinterface, TicketList tl, ReservationList rl,Member member) {
+	public Reservation reserve(Interface uiinterface, TicketList tl, ReservationList rl,Member member) {
 		
 		Ticket ticket=null;
 		int approval=2;
@@ -189,11 +182,8 @@ public class Control {
 		return re;																	//予約オブジェクト
 	}
 	
+	//予約情報表示メソッド
 	public static void showReservedTicket(Member member) {
-		
-		
-		
-		
 	}
 	
 }

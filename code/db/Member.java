@@ -11,7 +11,6 @@ public class Member {
 		this.password=pass;
 	}
 	
-	
 	public String getMemberID() {
 		return this.userID;
 	}
