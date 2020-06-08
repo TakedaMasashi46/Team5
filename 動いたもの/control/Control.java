@@ -57,7 +57,7 @@ public class Control {
 					break;
 				
 				case 2:																//チケット情報表示
-					String[] allList_ticketDate = (tl.showAllTicketDate()).split("=");				//格納されてるチケット情報表示
+					String[] allList_ticketDate = (tl.showAllTicketData()).split("=");				//格納されてるチケット情報表示
 					for(String line:allList_ticketDate) {
 						uiinterface.output(line);
 					}
@@ -101,7 +101,7 @@ public class Control {
 		while(true) {			//パスワード            pass正解まで繰り返し
 			System.out.println("パスワードを入力してください");
 			String pass = uiinterface.inputStr();
-			if(mm.getMmberPass(pass))break;
+			if(mm.getMemberPass(pass))break;
 			System.out.println("パスワードが間違っています");
 		}
 		return mm;													//pass変更するならここでオブジェクトを返すがよい？
@@ -158,7 +158,7 @@ public class Control {
 			}
 			
 			//チケット情報表示してる↓													//項目のチケット情報表示を使うかどうか
-			String [] date_ticket =(ticket.showTicketDate()).split("=");
+			String [] date_ticket =(ticket.showTicketData()).split("=");
 			uiinterface.output("・チケット情報");
 			for(String line:date_ticket) {
 				uiinterface.output(line);
