@@ -29,22 +29,25 @@ public class Control {
 		Member member=null;														//メンバーオブジェクトは属性で持っていないと予約できない
 		Reservation reservation=null;
 		while(true) {//val_menu !=3) {
-			val_menu = menu(uiinterface);											//メニューの選択
+														//メニューの選択
 			
-			switch(val_menu) {
-			case 1:																//ログイン
-				member = login(uiinterface,ml);									//ログインユーザーオブジェクト記録			
-				break;
-			
-			case 2:																//新規作成
-				//uiinterface.output("ユーザー名を入力してください");
-				//String id=uiinterface.inputStr();
-				break;
-			//case 3:																//終了
-				//System.exit(0);	
-				//return ;
+			while(val_menu!=1) {
+				val_menu = menu(uiinterface);
+				switch(val_menu) {
+				case 1:																//ログイン
+					member = login(uiinterface,ml);									//ログインユーザーオブジェクト記録			
+					break;
+				
+				//case 2:																//新規作成
+					//uiinterface.output("ユーザー名を入力してください");
+					//String id=uiinterface.inputStr();
+					//break;
+				//case 3:																//終了
+					//System.exit(0);	
+					//return ;
+				}
 			}
-			while(val_koumoku !=4) {
+			while(true) {
 				val_koumoku = selectMode(uiinterface);
 				
 				switch(val_koumoku) {
@@ -59,9 +62,9 @@ public class Control {
 						uiinterface.output(line);
 					}
 					break;
-				case 4:																//予約情報表示
-					showReservedTicket(member);//ユーザーIDから予約一覧で検索かけてID該当する予約を一括表示
-					break;
+				//case 4:																//予約情報表示
+					//showReservedTicket(member);//ユーザーIDから予約一覧で検索かけてID該当する予約を一括表示
+					//break;
 				case 3:																//システム終了 ここでプログラム終わり
 					System.exit(0);	//永続化ならここいらない？
 					//return ;永続化ならいる？
@@ -126,7 +129,7 @@ public class Control {
 	public Reservation reserve(Interface uiinterface, TicketList tl, ReservationList rl,Member member) {
 		
 		Ticket ticket=null;
-		int approval=2;
+		int approval=0;
 		int selectNumOfTicket=0;
 		int countOfReservation=1;
 		//要検討
@@ -147,7 +150,7 @@ public class Control {
 				if(Objects.isNull(ticket)) {
 					uiinterface.output("※存在するチケット番号を入力してください");
 				}
-				if(ticket.getTicketStock()==0) {
+				if(Objects.isNull(ticket)||ticket.getTicketStock()==0) {
 					ticket =null;
 					uiinterface.output("※在庫がありません");
 				}
@@ -162,29 +165,55 @@ public class Control {
 			}
 			
 			uiinterface.output("このチケットを予約しますか？");
-			uiinterface.output("承認なら「1」,承認しないなら「2」を入力してください");
-			approval=uiinterface.inputInt();
-			if(approval==2)ticket = null;
+			
+			while(true) {
+				uiinterface.output("承認なら「1」,承認しないなら「2」を入力してください");
+				approval=uiinterface.inputInt();
+				if(approval==1||approval==2) {
+					break;
+				}else {
+					uiinterface.output("「1」か「2」を入力してください");
+				}
+				
+			}
+				if(approval==2)ticket = null;
 		}while(approval ==2);													//非承認なら繰り返し
+		approval=0;
 		approval=2;//trueなら１falseなら２とかでも書き換えできる
 		
 		//チケットごとの処理が入る枚数指定、とか		非機能要求  controlからUIに対して枚数指定反復1
 		int ticketStock=ticket.getTicketStock();									//在庫数
 		do {
-			do {
+			while(true) {
 				System.out.println("チケット枚数の指定");
 				selectNumOfTicket=uiinterface.inputInt();
 				uiinterface.output("予約チケット枚数");
 				uiinterface.output(String.valueOf(selectNumOfTicket));
 				uiinterface.output("チケットの在庫数");
 				uiinterface.output(String.valueOf(ticketStock));
-			}while(selectNumOfTicket>ticketStock || selectNumOfTicket<=0);				//在庫数以上入力し直し
+				if(selectNumOfTicket>ticketStock) {
+					uiinterface.output("チケットの在庫超過しています");
+				}else if(selectNumOfTicket<=0) {
+					uiinterface.output("不正な値です");
+				}else {
+					break;
+				}
+			}				//在庫数以上入力し直し
 			uiinterface.output("---------");  										//見やすさのため入れるかどうか
 			uiinterface.output(selectNumOfTicket+"枚のチケットを予約しますか？");
-			uiinterface.output("承認なら「1」,承認しないなら「2」を入力してください");
-			approval=uiinterface.inputInt();
+			while(true) {
+				uiinterface.output("承認なら「1」,承認しないなら「2」を入力してください");
+				approval=uiinterface.inputInt();
+				if(approval==1||approval==2) {
+					break;
+				}else {
+					uiinterface.output("「1」か「2」を入力してください");
+				}
+				
+			}
 			
 		}while(approval == 2);
+		approval = 0;
 		//approval初期化
 		//日にちの取得
 		//
@@ -204,7 +233,7 @@ public class Control {
 	}
 	
 	//予約情報表示メソッド
-	public static void showReservedTicket(Member member) {
-	}
+	//public static void showReservedTicket(Member member) {
+	//}
 	
 }
