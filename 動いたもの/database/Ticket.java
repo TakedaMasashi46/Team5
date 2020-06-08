@@ -5,7 +5,7 @@ public class Ticket {
 	private int ticketNumber;			//チケット番号
 	private String ticketName;			//チケット名
 	private int price;					//価格
-	private String date;				//開催日
+	private String eventDate;				//開催日
 	private int stock;					//在庫
 	
 	
@@ -13,7 +13,7 @@ public class Ticket {
 		this.ticketNumber=tNum;
 		this.ticketName=tName;
 		this.price=price;
-		this.date=date;
+		this.eventDate=date;
 		this.stock=stock;
 	}
 	
@@ -29,9 +29,9 @@ public class Ticket {
 		return this.ticketName;
 	}
 	
-	public String showTicketDate() {
+	public String showTicketData() {
 		
-		String str="チケット番号:"+ticketNumber+"="+"チケット名:"+ticketName+"="+"価格:"+price+"="+"開催日:"+ date+"="+"在庫:"+stock;
+		String str="チケット番号:"+ticketNumber+"="+"チケット名:"+ticketName+"="+"価格:"+price+"="+"開催日:"+ eventDate+"="+"在庫:"+stock;
 		
 		return str;
 	}
