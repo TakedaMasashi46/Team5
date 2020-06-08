@@ -37,10 +37,10 @@ public class TicketList {
 		return null;
 	}
 	
-	public String showAllTicketDate() {
+	public String showAllTicketData() {
 		String data="";
 		for(Ticket t:ticketList) {
-			data+=t.showTicketDate();
+			data+=t.showTicketData();
 			data+="=";
 			data+="---------"; 
 			data+="=";
@@ -49,3 +49,4 @@ public class TicketList {
 	}
 	
 }
+
