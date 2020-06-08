@@ -149,8 +149,9 @@ public class Control {
 				ticket = tl.getTicket(num);	//選択したチケットオブジェクト
 				if(Objects.isNull(ticket)) {
 					uiinterface.output("※存在するチケット番号を入力してください");
+					continue;
 				}
-				if(Objects.isNull(ticket)||ticket.getTicketStock()==0) {
+				if(ticket.getTicketStock()==0) {
 					ticket =null;
 					uiinterface.output("※在庫がありません");
 				}
