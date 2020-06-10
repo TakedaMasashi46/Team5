@@ -1,5 +1,5 @@
-
 package domain;
+
 
 public class Member {
 	
@@ -16,11 +16,25 @@ public class Member {
 		return this.userID;
 	}
 	
-	public boolean getMemberPass(String pass) {
+	public String getMemberPass() {
+		return this.password;
+	}
+	
+	public boolean getMmberPass(String pass) {
 		if(this.password.equals(pass)) {
 			return true;
 		}
 		else return false;
 	}
 	
+	
+	
+//	public void setPass(String password) {
+//		this.password = password;
+//	}
+//	
+//	public void setID(String userID) {
+//		this.userID = userID;
+//	}
 }
+
