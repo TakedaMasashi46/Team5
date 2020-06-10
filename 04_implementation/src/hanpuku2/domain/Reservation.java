@@ -1,50 +1,56 @@
 package domain;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
-import static org.hamcrest.CoreMatchers.*;
-import management.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class Test_showR {
-	//test1 予約履歴がある場合
-	@Test
-	public void testshowReservation_1() {
-		Member m = new Member("クレスコ明日","12345");
-		Ticket ticket = new Ticket(1,"水族館",1000,"2020-06-10",20);
-		ReservationList rl = new ReservationList();
-		ShowInformation s = new ShowInformation();
+public class Reservation {
+	
+	private int reservationNumber;//予約番号
+	private Member member;//会員名
+	private String ticketName;//チケット名
+	private String reservationDate;//予約日
+	private int  reservationMaisu;//予約枚数
+	
+	//予約番号、会員名、チケット名、予約日、予約枚数
+	public Reservation(Member member,Ticket ticket,int selectNumOfTicket,int count ) {
 		
-		String userID = m.getMemberID();
-		rl.createReservation(m, ticket,1);
+		String ticketName=ticket.getTicketName();									//予約情報とチケット間で依存関係あり
+		this.member =member;
+		this.reservationNumber=count;
+		this.member=member;
+		 reservationMaisu =selectNumOfTicket;
+		this.ticketName=ticketName;
+       
+		//予約日取得
+		Date date=new Date();
+		DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+		this.reservationDate=dateFormat.format(date);
 		
-		String actual = rl.showAllReservationData(userID);
-
-		String expected =   "予約番号:1\n" + 
-							"会員名:クレスコ明日\n" + 
-							"チケット名:水族館\n" + 
-							"予約日:2020-06-10\n" + 
-							"予約枚数:1";
+		//予約枚数取得
+		this.reservationMaisu=selectNumOfTicket;
 		
-		//検証
-		assertThat(actual,is(expected));
+		//予約枚数を在庫から引く
+		ticket.minusTicketStock(selectNumOfTicket);									
+		
 	}
 	
-		//test2 予約履歴がない場合
-		@Test
-		public void testshowReservation_2() {
-			Member m = null;
-			Ticket ticket = null;
-			ReservationList rl = new ReservationList();
-			ShowInformation s = new ShowInformation();
-			
-			String userID = "クレスコ明後日";
-			
-			String actual = rl.showAllReservationData(userID);
-
-			String expected = "予約履歴がありません";
-			
-			//検証
-			assertThat(actual,is(expected));
+	public String showReservationData() {
+		String data="予約番号:"+this.reservationNumber+"\n"+"会員名:"+this.member.getMemberID()+"\n"+"チケット名:"+this.ticketName+"\n"+"予約日:"+this.reservationDate+"\n"+"予約枚数:"+this.reservationMaisu;
 		
+		return data;
 	}
+	
+	public Reservation getReservationDate(Reservation re,Member mm) {
+		//ユーザーIDの取得 
+		String userName = mm.getMemberID();//ログインした人のID
+		String id = re.member.getMemberID();//その予約オブジェクトのID
+		if(userName.equals(id)) {
+			return re;//予約オブジェクト
+		}
+		else {//その予約オブジェクトのIDとログインした人のIDが異なる
+			return null; 
+		}
+	}
+	
 }
