@@ -5,7 +5,7 @@ public class Ticket {
 	private int ticketNumber;			//チケット番号
 	private String ticketName;			//チケット名
 	private int price;					//価格
-	private String eventDate;				//開催日
+	private String eventDate;			//開催日
 	private int stock;					//在庫
 	
 	
@@ -20,9 +20,6 @@ public class Ticket {
 	public int getTicketNumber() {
 		return this.ticketNumber;
 	}
-	/*public String getTicketNumber() {
-		return String.valueOf(this.ticketNumber);
-	}*/
 	
 	
 	public String getTicketName() {
@@ -31,8 +28,7 @@ public class Ticket {
 	
 	public String showTicketData() {
 		
-		String str="チケット番号:"+ticketNumber+"="+"チケット名:"+ticketName+"="+"価格:"+price+"="+"開催日:"+ eventDate+"="+"在庫:"+stock;
-		
+		String str="チケット番号:"+ticketNumber+"\n"+"チケット名:"+ticketName+"\n"+"価格:"+price+"\n"+"開催日:"+ eventDate+"\n"+"在庫:"+stock;
 		return str;
 	}
 	
