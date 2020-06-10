@@ -51,6 +51,21 @@ public class ReservationList {
 		return data;
 	}
 	
+	
+	//ファイルから取得した予約リストをシステムの予約リストの追加する
+		public void downlodeReservationData(ArrayList<Reservation> fileReservationList) {
+			for(Reservation m :fileReservationList) {
+				reservationList.add(m);
+			}
+		}
+		
+		//システムの予約リストをファイルに追加する
+		public ArrayList<Reservation> updateReservationData(ArrayList<Reservation> fileReservationList) {
+			for(Reservation m :reservationList) {
+				fileReservationList.add(m);
+			}
+			return fileReservationList;
+		}
 
 
 }
