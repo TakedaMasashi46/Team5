@@ -7,15 +7,15 @@ public class ReservationList {
 	
 	//予約情報の型でリスト保存
 	ArrayList<Reservation> reservationList =new ArrayList<Reservation>();
-	
+	int count =0;
 	
 	//予約番号、会員名、チケット名、予約枚数
-	public Reservation createReservation(Member member,Ticket ticket, int selectNumOfTicket) {
+	public Reservation createReservation(Member member,Ticket ticket) {
 		
-		Reservation re=new Reservation(member,ticket,selectNumOfTicket);
+		Reservation re=new Reservation(member,ticket,count);
 		
 		reservationList.add(re);
-		
+		count++;
 		return re;
 	}
 	
