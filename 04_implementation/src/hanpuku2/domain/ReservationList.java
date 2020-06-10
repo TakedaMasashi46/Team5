@@ -10,9 +10,9 @@ public class ReservationList {
 	
 	
 	//予約番号、会員名、チケット名、予約枚数
-	public Reservation createReservation(String userName,Ticket ticket, int selectNumOfTicket) {
+	public Reservation createReservation(Member member,Ticket ticket, int selectNumOfTicket) {
 		
-		Reservation re=new Reservation(userName,ticket,selectNumOfTicket);
+		Reservation re=new Reservation(member,ticket,selectNumOfTicket);
 		
 		reservationList.add(re);
 		
