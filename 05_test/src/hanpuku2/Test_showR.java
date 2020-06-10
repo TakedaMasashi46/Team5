@@ -15,17 +15,15 @@ public class Test_showR {
 		ShowInformation s = new ShowInformation();
 		
 		String userID = m.getMemberID();
-		rl.createReservation("クレスコ明日", ticket, "予約日", 1);
+		rl.createReservation(m, ticket,1);
 		
 		String actual = rl.showAllReservationData(userID);
 
-		String expected =   "予約履歴\r\n" + 
-							"・予約情報１\r\n" + 
-							"　予約番号：1\r\n" + 
-							"　会員名：クレスコ明日\r\n" + 
-							"　チケット名：水族館\r\n" + 
-							"　予約日：2020-06-10※\r\n" + 
-							"　予約枚数：1";
+		String expected =   "予約番号:1\n" + 
+							"会員名:クレスコ明日\n" + 
+							"チケット名:水族館\n" + 
+							"予約日:2020-06-10\n" + 
+							"予約枚数:1";
 		
 		//検証
 		assertThat(actual,is(expected));
