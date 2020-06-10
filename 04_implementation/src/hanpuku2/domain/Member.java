@@ -20,7 +20,7 @@ public class Member {
 		return this.password;
 	}
 	
-	public boolean getMmberPass(String pass) {
+	public boolean getMemberPass(String pass) {
 		if(this.password.equals(pass)) {
 			return true;
 		}
