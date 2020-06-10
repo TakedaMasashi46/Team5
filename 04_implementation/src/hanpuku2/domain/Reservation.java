@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Reservation {
-	private static int counter=1;
+	
 	private int reservationNumber;//予約番号
 	private Member member;//会員名
 	private String ticketName;//チケット名
@@ -13,13 +13,13 @@ public class Reservation {
 	private int  reservationMaisu;//予約枚数
 	
 	//予約番号、会員名、チケット名、予約日、予約枚数
-	public Reservation(Member member,Ticket ticket,int selectNumOfTicket) {
+	public Reservation(Member member,Ticket ticket,int selectNumOfTicket,int count ) {
 		
 		String ticketName=ticket.getTicketName();									//予約情報とチケット間で依存関係あり
 		this.member =member;
-		this.reservationNumber=counter;
-		counter++;
+		this.reservationNumber=count;
 		this.member=member;
+		 reservationMaisu =selectNumOfTicket;
 		this.ticketName=ticketName;
        
 		//予約日取得
