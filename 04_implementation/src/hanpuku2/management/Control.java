@@ -32,18 +32,30 @@ public class Control {
 		while(true) {//val_menu !=3) {
 														//メニューの選択
 			//メニュー選択
-			val_menu= uiinterface.inputInt();
+			val_menu = menu(uiinterface);
 			
-			while(val_menu!=1) {
-				val_menu = menu(uiinterface);
+			while(val_menu==1 || val_menu==2) {
+				
 				switch(val_menu) {
 				case 1:																//ログイン
-					member = login.login(uiinterface,ml);									//ログインユーザーオブジェクト記録			
-					break;
+					member = login.login(uiinterface,ml);							//ログインユーザーオブジェクト記録			
+					if(member!=null) {
+						val_menu+=5;
+						break;
+					} else {
+						val_menu= menu(uiinterface);
+						break;
+					}
 				
 				case 2:																//新規作成
 					member= makeaccount.newAccount(uiinterface,ml);
-					break;
+					if(member!=null) {
+						val_menu=1;
+						break;
+					} else {
+						val_menu= menu(uiinterface);
+						break;
+					}
 				//case 3:																//終了
 					//System.exit(0);	
 					//return ;

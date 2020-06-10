@@ -26,7 +26,7 @@ public class MakeAccount {
 			if(approval==1) {//承認
 				//メンバーリストに追加
 				member=ml.setMember(id,pass);
-				
+				uiinterface.output("登録完了！続いてログインを行います。");
 				break;
 			}else if (approval == 2){//非承認
 				break;
@@ -34,6 +34,6 @@ public class MakeAccount {
 				uiinterface.output("「1」か「2」を入力してください");
 			}
 		}
-		return null;
+		return member;
 	}
 }
