@@ -40,5 +40,17 @@ public class Reservation {
 		
 		return data;
 	}
-
+	
+	public Reservation getReservationDate(Reservation re,Member mm) {
+		//ユーザーIDの取得 
+		String userName = mm.getMemberID();//ログインした人のID
+		String id = re.member.getMemberID();//その予約オブジェクトのID
+		if(userName.equals(id)) {
+			return re;//予約オブジェクト
+		}
+		else {//その予約オブジェクトのIDとログインした人のIDが異なる
+			return null; 
+		}
+	}
+	
 }
