@@ -25,7 +25,7 @@ public class Cancel {
 			
 			reLogin=rl.getReservation(member,reLogin);//log inしたmemberオブジェクト,log inした人が持ってる予約情報
 			
-			if(reLogin==null) {
+			if(reLogin.get(0)==null) {
 				uiinterface.output("予約情報がありません");
 				break;
 			}
