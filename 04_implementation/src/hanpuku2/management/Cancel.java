@@ -1,6 +1,7 @@
 package management;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import domain.Member;
 import domain.Reservation;
@@ -14,7 +15,7 @@ public class Cancel {
 		int approval =0;
 		int number=0;
 		
-		int count =0;//予約情報オブジェクトのカウント
+		int count =-1;//予約情報オブジェクトのカウント
 		
 		ArrayList<Reservation> reLogin=new ArrayList<Reservation>();//log inした人の予約情報をもつリスト
 		
@@ -23,11 +24,20 @@ public class Cancel {
 			//予約情報の表示
 			
 			reLogin=rl.getReservation(member,reLogin);//log inしたmemberオブジェクト,log inした人が持ってる予約情報
-		//	String data= rl.getReservation(member);
+			
+			if(reLogin==null) {
+				uiinterface.output("予約情報がありません");
+				break;
+			}
 			String data = "";
-			for(Reservation line: reLogin) {
-				data +=line.showReservationData();//予約情報の詳細
-				data +="\n";
+			//予約が一つもなければ予約情報なしでメニュー選択戻る
+			Iterator iterator =reLogin.iterator();
+			while(iterator.hasNext()) {
+				count++;
+				for(Reservation line: reLogin) {
+					data +=line.showReservationData();//予約情報の詳細
+					data +="\n";
+				}
 			}
 			while(true) {
 				uiinterface.output(data);
@@ -56,9 +66,9 @@ public class Cancel {
 			if(approval ==1 || approval == -1) {
 				break;
 			}
-		}//これをループ
+		}
 		//予約情報の削除
-		rl.deleteReservation(number);
+		if(approval ==1)rl.deleteReservation(number);
 	}
 	
 
