@@ -1,7 +1,10 @@
 package domain;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Reservation {
-	
 	private static int counter=1;
 	private int reservationNumber;//予約番号
 	private String name;//会員名
@@ -10,7 +13,7 @@ public class Reservation {
 	private int  reservationMaisu;//予約枚数
 	
 	//予約番号、会員名、チケット名、予約日、予約枚数
-	public Reservation(String userName,Ticket ticket,String date,int selectNumOfTicket) {
+	public Reservation(String userName,Ticket ticket,int selectNumOfTicket) {
 		
 		String ticketName=ticket.getTicketName();									//予約情報とチケット間で依存関係あり
 		
@@ -18,10 +21,15 @@ public class Reservation {
 		counter++;
 		this.name=userName;
 		this.ticketName=ticketName;
-		this.reservationDate=date;
+       
+		//予約日取得
+		Date date=new Date();
+		DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+		this.reservationDate=dateFormat.format(date);
 		this.reservationMaisu=selectNumOfTicket;
 		
-		ticket.minusTicketStock(selectNumOfTicket);									//予約枚数を在庫から引く
+		//予約枚数を在庫から引く
+		ticket.minusTicketStock(selectNumOfTicket);									
 		
 	}
 	
@@ -30,7 +38,5 @@ public class Reservation {
 		
 		return data;
 	}
-	
-	
-	
+
 }
