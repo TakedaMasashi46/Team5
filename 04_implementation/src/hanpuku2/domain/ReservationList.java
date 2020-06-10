@@ -40,7 +40,16 @@ public class ReservationList {
 		return reservationList.get(num);
 	}
 	
-	
+	public String showAllReservationData(String userID) {
+		String data = "";
+			if(reservationList.size()==0) {
+				data = "予約履歴がありません";
+			}else {
+				for(Reservation r:reservationList) 
+				data = r.showReservationData();
+			}
+		return data;
+	}
 	
 
 
