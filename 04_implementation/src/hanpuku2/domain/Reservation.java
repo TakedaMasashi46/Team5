@@ -26,6 +26,8 @@ public class Reservation {
 		Date date=new Date();
 		DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
 		this.reservationDate=dateFormat.format(date);
+		
+		//予約枚数取得
 		this.reservationMaisu=selectNumOfTicket;
 		
 		//予約枚数を在庫から引く
