@@ -11,13 +11,12 @@ import userInterface.Interface;
 
 public class TicketReservation {
 	//予約
-		public Reservation reserve(Interface uiinterface, TicketList tl, ReservationList rl,Member member) {
+		public Reservation ticketreservation(Interface uiinterface, TicketList tl, ReservationList rl,Member member) {
 			
 			Ticket ticket=null;
 			int approval=0;
 			int selectNumOfTicket=0;
-			int countOfReservation=1;
-			//要検討
+	
 			String[] date_ticketList=(tl.showTicketNumberName()).split("=");				//チケット名と番号のみ表示
 			for(String line:date_ticketList) {
 				
@@ -67,7 +66,7 @@ public class TicketReservation {
 			approval=0;
 			approval=2;//trueなら１falseなら２とかでも書き換えできる
 			
-			//チケットごとの処理が入る枚数指定、とか		非機能要求  controlからUIに対して枚数指定反復1
+			//チケットごとの処理が入る枚数指定
 			int ticketStock=ticket.getTicketStock();									//在庫数
 			do {
 				while(true) {
@@ -85,7 +84,7 @@ public class TicketReservation {
 						break;
 					}
 				}				//在庫数以上入力し直し
-				uiinterface.output("---------");  										//見やすさのため入れるかどうか
+				uiinterface.output("---------");  								
 				uiinterface.output(selectNumOfTicket+"枚のチケットを予約しますか？");
 				while(true) {
 					uiinterface.output("承認なら「1」,承認しないなら「2」を入力してください");
@@ -101,12 +100,9 @@ public class TicketReservation {
 			}while(approval == 2);
 			approval = 0;
 			//approval初期化
-			//日にちの取得
-			//
 			//予約番号、会員名、チケット名、予約日、予約枚数    予約しました
-			//Listで持ってこないと全部表示できない
 			//クラスフィールドとして予約番号書き換え
-			Reservation re = rl.createReservation(member.getMemberID(),ticket,"予約日",selectNumOfTicket);
+			Reservation re = rl.createReservation(member.getMemberID(),ticket,selectNumOfTicket);
 			
 			
 			String[] date_showReserv = (re.showReservationData()).split("=");
