@@ -19,7 +19,7 @@ public class Reservation {
 		this.member =member;
 		this.reservationNumber=counter;
 		counter++;
-		this.name=userName;
+		this.member=member;
 		this.ticketName=ticketName;
        
 		//予約日取得
@@ -36,7 +36,7 @@ public class Reservation {
 	}
 	
 	public String showReservationData() {
-		String data="予約番号:"+this.reservationNumber+"="+"会員名:"+this.name+"="+"チケット名:"+this.ticketName+"="+"予約日:"+this.reservationDate+"="+"予約枚数:"+this.reservationMaisu;
+		String data="予約番号:"+this.reservationNumber+"="+"会員名:"+this.member.getMemberID()+"="+"チケット名:"+this.ticketName+"="+"予約日:"+this.reservationDate+"="+"予約枚数:"+this.reservationMaisu;
 		
 		return data;
 	}
