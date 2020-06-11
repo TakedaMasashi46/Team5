@@ -25,7 +25,7 @@ public class ReservationList {
 		String data = null;
 		for(int i=0;i<reservationList.size();i++) {
 			Reservation keepReservation = reservationList.get(i).getReservationDate(reservationList.get(i),member);//予約オブジェクトが引数
-			if(reLogin != null)reLogin.add(keepReservation);
+			if(keepReservation != null)reLogin.add(keepReservation);
 		}
 		return reLogin;
 	}
