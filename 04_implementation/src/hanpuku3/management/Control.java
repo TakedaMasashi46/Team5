@@ -146,9 +146,8 @@ public class Control {
 			if(date == 1 ||date == 2 || date == 3 || date == 4 || date == 5) {
 				break;
 			}
-			System.out.println("入力直し");
+			uiinterface.output("入力直し");
 		}
 		return date;
 	}
 }
-
