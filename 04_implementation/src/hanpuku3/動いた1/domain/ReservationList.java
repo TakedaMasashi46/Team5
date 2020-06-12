@@ -11,14 +11,14 @@ public class ReservationList {
 	int count = 1;
 	
 	//予約番号、会員名、チケット名、予約枚数
-	public Reservation createReservation(Member member,Ticket ticket,int selectNumOfTicket) {
+	public Reservation createReservation(Member member,Ticket ticket,int maisu, int maisuChild, int sumPrice) {
 		while(true) {
 			if(reservationList.get(count)==null) {
 				break;
 			}
 			count++;
 		}
-		Reservation re=new Reservation(member,ticket,selectNumOfTicket,count);
+		Reservation re=new Reservation(member,ticket, maisu, maisuChild,count,sumPrice);
 		count=1;
 		reservationList.put(re.getReservationNumber(),re);
 		return re;
@@ -36,13 +36,10 @@ public class ReservationList {
 		return reLogin;
 	}
 	
-	public void deleteReservation(int number,Ticket ticket) {
+	public void deleteReservation(int number) {
 		Reservation res = reservationList.get(number);
-		System.out.println(res.getReservationMaisu());
-		
-		ticket.returnStock(res.getReservationMaisu());
+		res.getReservationTicket().returnStock(res.getReservationMaisu()+res.getReservationChildMaisu());
 		reservationList.remove(number);
-		
 	}
 	
 	

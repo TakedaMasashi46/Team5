@@ -31,12 +31,16 @@ public class Ticket implements Serializable{
 	
 	public String showTicketData() {
 		
-		String str="チケット番号:"+ticketNumber+"\n"+"チケット名:"+ticketName+"\n"+"価格:"+price+"\n"+"開催日:"+ eventDate+"\n"+"在庫:"+stock;
+		String str="チケット番号:"+ticketNumber+"\n"+"チケット名:"+ticketName+"\n"+"大人価格:"+price+"\n"+"子供価格:"+(int)(0.5*price)+"\n"+"開催日:"+ eventDate+"\n"+"在庫:"+stock;
 		return str;
 	}
 	
 	public int getTicketStock() {
 		return this.stock;
+	}
+	
+	public int getPrice() {
+		return this.price;
 	}
 	
 	//予約枚数を在庫から引く

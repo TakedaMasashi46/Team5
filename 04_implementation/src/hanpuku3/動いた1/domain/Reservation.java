@@ -13,32 +13,34 @@ public class Reservation implements Serializable{
 	private Member member;//会員名
 	private Ticket ticket;//チケット名
 	private String reservationDate;//予約日
-	private int  reservationMaisu;//予約枚数
+	private int reservationMaisu;//予約枚数
+	private int reservationChildMaisu;
+	private int sumPrice;
 	
 	//予約番号、会員名、チケット名、予約日、予約枚数
-	public Reservation(Member member,Ticket ticket,int selectNumOfTicket,int count) {
+	public Reservation(Member member,Ticket ticket,int maisu, int maisuChild, int count,int sumPrice) {
 									//予約情報とチケット間で依存関係あり
 		this.member =member;
 		this.reservationNumber=count;
 		this.member=member;
-		 reservationMaisu =selectNumOfTicket;
+		this.reservationMaisu = maisu;
+		this.reservationChildMaisu = maisuChild;
 		this.ticket=ticket;
+		this.sumPrice=sumPrice;
        
 		//予約日取得
 		Date date=new Date();
 		DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
 		this.reservationDate=dateFormat.format(date);
 		
-		//予約枚数取得
-		this.reservationMaisu=selectNumOfTicket;
-		
 		//予約枚数を在庫から引く
-		ticket.minusTicketStock(selectNumOfTicket);									
+		ticket.minusTicketStock((reservationMaisu+reservationChildMaisu));									
 		
 	}
 	
 	public String showReservationData() {
-		String data="予約番号:"+this.reservationNumber+"\n"+"会員名:"+this.member.getMemberID()+"\n"+"チケット名:"+this.ticket.getTicketName()+"\n"+"予約日:"+this.reservationDate+"\n"+"予約枚数:"+this.reservationMaisu+"\n";
+		String data="予約番号:"+this.reservationNumber+"\n"+"会員名:"+this.member.getMemberID()+"\n"+"チケット名:"+this.ticket.getTicketName()+"\n"+"予約日:"+this.reservationDate+"\n"+
+					"大人予約枚数:"+this.reservationMaisu+"\n"+"子供予約枚数:"+this.reservationChildMaisu+"\n"+"合計金額："+this.sumPrice+"\n";
 		
 		return data;
 	}
@@ -61,6 +63,9 @@ public class Reservation implements Serializable{
 	
 	public int getReservationMaisu() {
 		return reservationMaisu;
+	}
+	public int getReservationChildMaisu() {
+		return reservationChildMaisu;
 	}
 	public String getReservationName() {
 		return member.getMemberID();
