@@ -82,7 +82,7 @@ public class TicketReservation extends Command{
 				uiinterface.output(selectNumOfTicket+"枚のチケットを予約しますか？");
 				approval=Command.approval();
 			}while(approval == false);
-			approval = null;
+			approval = false;
 			//approval初期化
 			//予約番号、会員名、チケット名、予約日、予約枚数    予約しました
 			//クラスフィールドとして予約番号書き換え
