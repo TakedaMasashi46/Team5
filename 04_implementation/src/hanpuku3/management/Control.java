@@ -13,6 +13,7 @@ import java.util.Map;
 import db.*;
 
 
+
 //エラー処理を行うクラスあってもいい　メソッドごとに判定の種類分けられる
 public class Control {
 
@@ -150,4 +151,3 @@ public class Control {
 		return date;
 	}
 }
-
