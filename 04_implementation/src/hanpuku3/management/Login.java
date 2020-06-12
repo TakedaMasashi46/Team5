@@ -1,12 +1,19 @@
 package management;
 
+import java.util.Map;
+
 import domain.Member;
 import domain.MemberList;
 import userInterface.Interface;
 
-public class Login {
+public class Login extends Command{
+	
 	//ログイン
-		public Member login(Interface uiinterface,MemberList ml) {
+	@Override
+	public Object execute(Map<Integer,Object> map) {
+		
+				MemberList ml = (MemberList) map.get(1);
+				
 			Member mm = null;
 			while(mm==null) {											//ユーザーID     nullなら入力し直し
 				uiinterface.output("ユーザーIDを入力してください");
@@ -26,9 +33,10 @@ public class Login {
 				if(mm.getMemberPass(pass))break;
 				System.out.println("パスワードが間違っています");
 			}
-			return mm;													//pass変更するならここでオブジェクトを返すがよい？
+			return mm;													
 		}
-	
+		
+//メニューを返す
 	public Member returnMenu() {
 		Member mm = null;
 		return mm;
