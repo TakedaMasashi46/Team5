@@ -55,7 +55,7 @@ public class TicketReservation extends Command{
 				
 				uiinterface.output("このチケットを予約しますか？");
 				
-				approval = Command.approval();
+				approval = approval();
 				if(approval==false) ticket = null;
 			}while(approval ==false);													//非承認なら繰り返し
 			approval=false;//trueなら１falseなら２とかでも書き換えできる
@@ -80,7 +80,7 @@ public class TicketReservation extends Command{
 				}				//在庫数以上入力し直し
 				uiinterface.output("---------");  								
 				uiinterface.output(selectNumOfTicket+"枚のチケットを予約しますか？");
-				approval=Command.approval();
+				approval=approval();
 			}while(approval == false);
 			approval = false;
 			//approval初期化
