@@ -9,12 +9,17 @@ import domain.Ticket;
 import domain.TicketList;
 import userInterface.Interface;
 
-public class TicketReservation {
+public class TicketReservation extends Command{
 	//予約
-		public Reservation ticketreservation(Interface uiinterface, TicketList tl, ReservationList rl,Member member) {
+		@Override
+		public Reservation execute(Map<Integer,Object> map) {
+			
+			TicketList tl = (TicketList)map.get(1);
+			ReservationList rl = (ReservationList)map.get(2);
+			Member member = (Member)map.get(3);
 			
 			Ticket ticket=null;
-			int approval=0;
+			boolean approval=null;
 			int selectNumOfTicket=0;
 	
 			String[] date_ticketList=(tl.showTicketNumberName()).split("=");				//チケット名と番号のみ表示
@@ -51,20 +56,10 @@ public class TicketReservation {
 				
 				uiinterface.output("このチケットを予約しますか？");
 				
-				while(true) {
-					uiinterface.output("承認なら「1」,承認しないなら「2」を入力してください");
-					approval=uiinterface.inputInt();
-					if(approval==1||approval==2) {
-						break;
-					}else {
-						uiinterface.output("「1」か「2」を入力してください");
-					}
-					
-				}
-					if(approval==2)ticket = null;
-			}while(approval ==2);													//非承認なら繰り返し
-			approval=0;
-			approval=2;//trueなら１falseなら２とかでも書き換えできる
+				approval = Command.approval();
+				if(approval==false) ticket = null;
+			}while(approval ==false);													//非承認なら繰り返し
+			approval=false;//trueなら１falseなら２とかでも書き換えできる
 			
 			//チケットごとの処理が入る枚数指定
 			int ticketStock=ticket.getTicketStock();									//在庫数
@@ -86,19 +81,9 @@ public class TicketReservation {
 				}				//在庫数以上入力し直し
 				uiinterface.output("---------");  								
 				uiinterface.output(selectNumOfTicket+"枚のチケットを予約しますか？");
-				while(true) {
-					uiinterface.output("承認なら「1」,承認しないなら「2」を入力してください");
-					approval=uiinterface.inputInt();
-					if(approval==1||approval==2) {
-						break;
-					}else {
-						uiinterface.output("「1」か「2」を入力してください");
-					}
-					
-				}
-				
-			}while(approval == 2);
-			approval = 0;
+				approval=Command.approval();
+			}while(approval == false);
+			approval = null;
 			//approval初期化
 			//予約番号、会員名、チケット名、予約日、予約枚数    予約しました
 			//クラスフィールドとして予約番号書き換え
