@@ -19,7 +19,7 @@ public class TicketReservation extends Command{
 			Member member = (Member)map.get(3);
 			
 			Ticket ticket=null;
-			boolean approval=null;
+			boolean approval=false;
 			int selectNumOfTicket=0;
 	
 			String[] date_ticketList=(tl.showTicketNumberName()).split("=");				//チケット名と番号のみ表示
