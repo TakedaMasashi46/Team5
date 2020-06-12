@@ -5,11 +5,8 @@ import java.util.*;
 import userInterface.Interface;
 
 abstract class Command {
-	
-	Map<Integer,Object> map=new HashMap<Integer,Object>();
-	Interface uiinterface =new Interface();
-	//各メソッドで中身実装
-	public abstract Object execute();
+	Interface uiinterface =new Interface();	
+	public abstract Object execute();//各メソッドで中身実装
 	
 	//承認非承認
 	public boolean approval() {	

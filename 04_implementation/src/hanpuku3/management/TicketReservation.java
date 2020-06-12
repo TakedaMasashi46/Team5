@@ -12,14 +12,13 @@ import userInterface.Interface;
 public class TicketReservation extends Command{
 	//予約
 		@Override
-		public Reservation execute(Map<Integer,Object> map) {
-			
+		public Object execute(Map<Integer,Object> map) {	
 			TicketList tl = (TicketList)map.get(1);
 			ReservationList rl = (ReservationList)map.get(2);
 			Member member = (Member)map.get(3);
 			
 			Ticket ticket=null;
-			boolean approval=null;
+			boolean approval=false;
 			int selectNumOfTicket=0;
 	
 			String[] date_ticketList=(tl.showTicketNumberName()).split("=");				//チケット名と番号のみ表示
