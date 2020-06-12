@@ -6,6 +6,10 @@ import domain.MemberList;
 
 import domain.ReservationList;
 import domain.TicketList;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import db.*;
 
 
@@ -23,13 +27,16 @@ public class Control {
 		ReservationList rl=new ReservationList();
 		TicketList tl=new TicketList();											//チケットオブジェクトも生成
 		Login login=new Login();
-		ShowInformation infor=new ShowInformation();
+		ShowAllTicketData showT=new ShowAllTicketData();
+		ShowReservationLog showR=new ShowReservationLog();
 		MakeAccount makeaccount=new MakeAccount();
 		TicketReservation tr=new TicketReservation();
 		Cancel cancel=new Cancel();
 		FileMember fm = new FileMember();
 		FileTicket ft = new FileTicket();
 		FileReservation fr = new FileReservation();
+		
+		Map<Integer,Object> map=new HashMap<Integer,Object>();
 		
 		//属性
 		Member member=null;														//メンバーオブジェクトは属性で持っていないと予約できない
@@ -47,7 +54,8 @@ public class Control {
 				
 				switch(val_menu) {
 				case 1:																//ログイン
-					member = login.login(uiinterface,ml);							//ログインユーザーオブジェクト記録			
+					map.put(1,ml);
+					member = login.execute(map);							//ログインユーザーオブジェクト記録			
 					if(member!=null) {
 						val_menu+=5;
 						break;
@@ -57,7 +65,8 @@ public class Control {
 					}
 				
 				case 2:																//新規作成
-					member= makeaccount.newAccount(uiinterface,ml);
+					//map.put(1,ml);			
+					member= makeaccount.execute(map);
 					if(member!=null) {
 						val_menu=1;
 						break;
@@ -76,16 +85,24 @@ public class Control {
 				
 				switch(val_koumoku) {
 				case 1://チケット予約
-					tr.ticketreservation(uiinterface,tl,rl,member);
+					map.put(1, tl);
+					map.put(2, rl);
+					map.put(3, member);
+					tr.execute(map);
 					break;
 				case 2://チケット情報表示
-					infor.showallTicketData(tl);
+					map.put(1, tl);
+					showT.execute(map);
 					break;
 				case 3://予約情報表示
-					infor.showReservationLog(member,rl);//ユーザーIDから予約一覧で検索かけてID該当する予約を一括表示
+					map.put(1, rl);
+					showR.execute(map);//ユーザーIDから予約一覧で検索かけてID該当する予約を一括表示
 					break;
 				case 4://予約キャンセル
-					cancel.cancel(uiinterface,member,rl,tl);
+					map.put(1, member);
+					map.put(2, rl);
+					map.put(3, rl);
+					cancel.execute(map);
 					break;
 				case 5://システム終了 
 					
