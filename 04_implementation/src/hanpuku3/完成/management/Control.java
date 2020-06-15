@@ -27,12 +27,12 @@ public class Control {
 		MemberList ml=new MemberList();
 		ReservationList rl=new ReservationList();
 		TicketList tl=new TicketList();											//チケットオブジェクトも生成
-		Login login=new Login();
-		ShowAllTicketData showT=new ShowAllTicketData();
-		ShowReservationLog showR=new ShowReservationLog();
-		MakeAccount makeaccount=new MakeAccount();
+		Command login=new Login();
+		Command showT=new ShowAllTicketData();
+		Command showR=new ShowReservationLog();
+		Command makeaccount=new MakeAccount();
 		TicketReservation tr=new TicketReservation();
-		Cancel cancel=new Cancel();
+		Command cancel=new Cancel();
 		FileMember fm = new FileMember();
 		FileTicket ft = new FileTicket();
 		FileReservation fr = new FileReservation();
@@ -125,7 +125,7 @@ public class Control {
 	}
 
 	//メニュー選択
-	public int menu(Interface uiinterface) {					//ログインするか新規作成するか
+	private int menu(Interface uiinterface) {					//ログインするか新規作成するか
 		uiinterface.output("項目に該当する数値を入力してください");
 		uiinterface.output("1.ログイン");
 		uiinterface.output("2.新規作成");
@@ -140,7 +140,7 @@ public class Control {
 		return val_menu;
 	}
 	//モード選択
-	public int selectMode(Interface uiinterface) {
+	private int selectMode(Interface uiinterface) {
 		
 		int date=0;
 		uiinterface.output("項目の選択 以下数字を入力してください");

@@ -27,7 +27,6 @@ public class ReservationList {
 	//getReservationDate(reservationList.get(i),member);
 	//                   ログインした人の予約オブジェクトリスト             ,ログインした会員のオブジェクト
 	public Map<Integer,Reservation> getReservation(Member member,Map<Integer,Reservation> reLogin) {
-		String data = null;
 
 		for(Map.Entry<Integer,Reservation> entry:reservationList.entrySet()) {
 			Reservation keepReservation = entry.getValue().getReservationDate(entry.getValue(),member);//予約オブジェクトが引数

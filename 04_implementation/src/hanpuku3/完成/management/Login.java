@@ -4,7 +4,6 @@ import java.util.Map;
 
 import domain.Member;
 import domain.MemberList;
-import userInterface.Interface;
 
 public class Login extends Command{
 	
@@ -36,7 +35,7 @@ public class Login extends Command{
 		}
 		
 //メニューを返す
-	public Member returnMenu() {
+	private Member returnMenu() {
 		Member mm = null;
 		return mm;
 	}

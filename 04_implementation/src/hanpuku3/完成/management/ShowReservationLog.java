@@ -3,9 +3,7 @@ package management;
 import java.util.Map;
 
 import domain.Member;
-import domain.TicketList;
 import domain.ReservationList;
-import userInterface.Interface;
 
 public class ShowReservationLog extends Command{
 

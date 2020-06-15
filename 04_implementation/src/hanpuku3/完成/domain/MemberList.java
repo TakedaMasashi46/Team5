@@ -2,7 +2,6 @@ package domain;
 
 import java.util.ArrayList;
 
-import db.FileMember;
 
 public class MemberList {
 	

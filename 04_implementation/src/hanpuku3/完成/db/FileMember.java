@@ -1,7 +1,6 @@
 package db;
 
 import java.io.*;
-import java.util.List;
 import java.util.ArrayList;
 import domain.MemberList;
 import domain.Member;

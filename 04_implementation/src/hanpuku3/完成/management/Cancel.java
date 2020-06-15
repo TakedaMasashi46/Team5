@@ -3,21 +3,18 @@ package management;
 import java.util.*;
 
 import domain.*;
-import userInterface.Interface;
 
 public class Cancel extends Command{
 
 	@Override
-	public Object execute(Map<Integer,Object> map) {// void cancel(Interface uiinterface, Member member, ReservationList rl,TicketList tl) {
+	public Object execute(Map<Integer,Object> map) {
 		
 		Member member=(Member) map.get(1);//ログインしたメンバーオブジェクト
 		ReservationList rl =(ReservationList) map.get(2);//予約情報リスト
 		TicketList tl = (TicketList)map.get(3);
 
 		int number=0;
-		int count =0;//予約情報オブジェクトのカウント
 		
-		//Reservation plusStock=null;
 		Map<Integer,Reservation> reLogin=new HashMap<Integer,Reservation>();//log inした人の予約情報をもつリスト
 		
 		//予約情報の表示
@@ -31,7 +28,6 @@ public class Cancel extends Command{
 		for(Map.Entry<Integer,Reservation> entry:reLogin.entrySet()) {
 			data +=entry.getValue().showReservationData();//予約情報の詳細
 			data +="\n";
-			count++;
 		}
 		
 		while(true) {

@@ -8,7 +8,6 @@ import domain.Reservation;
 import domain.ReservationList;
 import domain.Ticket;
 import domain.TicketList;
-import userInterface.Interface;
 
 public class TicketReservation extends Command{
 	//予約
@@ -113,8 +112,7 @@ public class TicketReservation extends Command{
 			}
 			return re;																	//予約オブジェクト
 		}
-		
-		public int ticketSumPrice(int maisu, int maisuChild,Ticket ticket) {
+		private int ticketSumPrice(int maisu, int maisuChild,Ticket ticket) {
 			int price = ticket.getPrice();
 			return maisu*price + maisuChild*(int)(0.5*price);
 		}

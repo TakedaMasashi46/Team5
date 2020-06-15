@@ -5,7 +5,6 @@ import java.util.InputMismatchException;
 public class Interface {
 
 	//使用者からの入力を受け付ける
-	
 	//ユーザー名,pass
 	//ここでは入力されたものすべて返す
 	public String inputStr() {
