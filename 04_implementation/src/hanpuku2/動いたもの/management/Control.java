@@ -38,7 +38,7 @@ public class Control {
 		ft.getTicketdata(tl);
 		fr.getReservationdata(rl);
 		
-		while(true) {//val_menu !=3) {
+		while(true) {
 														//メニューの選択
 			//メニュー選択
 			val_menu = menu(uiinterface);
@@ -65,9 +65,6 @@ public class Control {
 						val_menu= menu(uiinterface);
 						break;
 					}
-				//case 3:																//終了
-					//System.exit(0);	
-					//return ;
 				}
 			}
 			//項目選択
@@ -104,7 +101,6 @@ public class Control {
 		uiinterface.output("項目に該当する数値を入力してください");
 		uiinterface.output("1.ログイン");
 		uiinterface.output("2,新規作成");
-		//uiinterface.output("3.終了");								//ログアウト
 		while(true) {												//１か２でない場合再度入力させる
 			val_menu=uiinterface.inputInt();									
 			if(val_menu ==1 ||val_menu==2)break;
