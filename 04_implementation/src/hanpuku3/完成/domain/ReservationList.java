@@ -5,8 +5,7 @@ import java.util.*;
 
 public class ReservationList {
 	
-	//予約情報の型でリスト保存
-	//ArrayList<Reservation> reservationList =new ArrayList<Reservation>();
+	//予約情報の型でマップ保存
 	Map<Integer,Reservation> reservationList = new HashMap<Integer,Reservation>();
 	int count = 1;
 	
@@ -24,7 +23,6 @@ public class ReservationList {
 		return re;
 	}
 	
-	//getReservationDate(reservationList.get(i),member);
 	//                   ログインした人の予約オブジェクトリスト             ,ログインした会員のオブジェクト
 	public Map<Integer,Reservation> getReservation(Member member,Map<Integer,Reservation> reLogin) {
 

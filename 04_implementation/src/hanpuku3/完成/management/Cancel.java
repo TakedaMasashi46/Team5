@@ -38,7 +38,7 @@ public class Cancel extends Command{
 				if(number ==-1)break;//cancelせずにメインメニューへ戻る
 				if(reLogin.get(number)!=null) {
 					uiinterface.output(reLogin.get(number).showReservationData());//選択した予約情報表示
-					break;//?
+					break;
 				}
 				uiinterface.output("予約番号入力が間違っています");
 			}
