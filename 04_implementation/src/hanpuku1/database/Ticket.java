@@ -20,10 +20,6 @@ public class Ticket {
 	public int getTicketNumber() {
 		return this.ticketNumber;
 	}
-	/*public String getTicketNumber() {
-		return String.valueOf(this.ticketNumber);
-	}*/
-	
 	
 	public String getTicketName() {
 		return this.ticketName;
