@@ -48,23 +48,6 @@ public class MemberList {
 		}
 		return fileMemberList;
 	}
-		
-		
-		
-	//金子テスト用追加 リスト内要素リターン
-	public Member getMember(int idx) {
-		return memberList.get(idx);
-	}
-	
-	//test
-	public void showAllMemberData() {
-		for(Member mb:memberList) {
-			System.out.println(mb.getMemberID());
-			System.out.println("----------------");
-			System.out.println(mb.strgetMemberPass());
-			System.out.println("----------------");
-		}
-	}
 	
 }
 
