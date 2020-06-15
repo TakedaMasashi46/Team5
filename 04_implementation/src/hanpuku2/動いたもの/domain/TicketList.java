@@ -63,7 +63,6 @@ public class TicketList {
 		return fileTicketList;
 	}
 	
-	//test
 	public void addTicket(Ticket ticket) {
 		ticketList.add(ticket);
 	}

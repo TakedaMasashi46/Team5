@@ -30,8 +30,6 @@ public class Cancel {
 			}
 			String data = "";
 			//予約が一つもなければ予約情報なしでメニュー選択戻る
-			//Iterator iterator =reLogin.iterator();
-			//while(iterator.hasNext()) {
 				
 				for(Map.Entry<Integer,Reservation> entry:reLogin.entrySet()) {
 					data +=entry.getValue().showReservationData();//予約情報の詳細

@@ -10,7 +10,6 @@ public class Login {
 			Member mm = null;
 			while(mm==null) {											//ユーザーID     nullなら入力し直し
 				uiinterface.output("ユーザーIDを入力してください");
-				//String id=uiinterface.inputStr();
 				mm=ml.checkID(uiinterface.inputStr());					//指定したIDのメンバーオブジェクトが返る
 				if(mm==null) {
 				System.out.println("ユーザーIDが間違っています");

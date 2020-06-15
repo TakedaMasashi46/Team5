@@ -24,7 +24,7 @@ public class TicketReservation {
 				
 				
 			}
-			//↑要検討
+			
 			do {
 				while(ticket == null) {
 					uiinterface.output("予約したいチケット番号を入力してください");
