@@ -75,9 +75,6 @@ public class Control {
 						val_menu= menu(uiinterface);
 						break;
 					}
-				//case 3:																//終了
-					//System.exit(0);	
-					//return ;
 				}
 			}
 			//項目選択
@@ -129,7 +126,6 @@ public class Control {
 		uiinterface.output("項目に該当する数値を入力してください");
 		uiinterface.output("1.ログイン");
 		uiinterface.output("2.新規作成");
-		//uiinterface.output("3.終了");								//ログアウト
 		
 		while(true) {												//１か２でない場合再度入力させる
 			val_menu=uiinterface.inputInt();									
